@@ -27,7 +27,7 @@ const LoginShopper = () => {
                 onSubmit={(values) => {
                     axios({
                         method:"get",
-                        url:"http://localhost:8080/users"
+                        url:"http://localhost:8080/login"
                     })
                     .then(response => {
                         for(var user of response.data)
