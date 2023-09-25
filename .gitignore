@@ -27,3 +27,8 @@ node_modules
 "/demo.js"
 
 "/server.js"
+
+.env
+
+".env"
+
