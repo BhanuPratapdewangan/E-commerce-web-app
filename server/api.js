@@ -188,7 +188,7 @@ app.use(cors());
 // Get the user data in database
 app.get('/users', async(req, res) => {
     
-    let data = await userModel.findOne();
+    let data = await userModel.find();
     if(data){
         res.send(data);
     } else {
@@ -208,11 +208,11 @@ app.post('/userRegister', async(req, res) => {
 });
 
 // User Login API's
-app.post('/login', async(req, res) => {
+app.get('/login', async(req, res) => {
 
     if(req.body.Email && req.body.Password){
 
-        let data = await userModel.findOne(req.body).select('-Password');
+        let data = await userModel.find(req.body).select('-Password');
 
         if(data){
             res.send(data);
