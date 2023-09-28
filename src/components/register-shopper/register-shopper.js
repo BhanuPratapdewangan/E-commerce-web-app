@@ -15,7 +15,7 @@ const RegisterShopper = () => {
     useEffect(() => {
         axios({
             method:"get",
-            url:"http://localhost:8080/users"
+            url:"http://localhost:5500/users"
         })
         .then(response => {
             setUsers(response.data);
@@ -65,7 +65,7 @@ const RegisterShopper = () => {
                 onSubmit={(values) => {
                     axios({
                         method:"post",
-                        url:"http://localhost:8080/userRegister",
+                        url:"http://localhost:5500/userRegister",
                         data: values
                     }).then(() => {
                         alert(`Register Successfully...!`);

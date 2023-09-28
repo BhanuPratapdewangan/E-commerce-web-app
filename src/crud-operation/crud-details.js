@@ -11,9 +11,8 @@ const CrudDetails = () => {
     useEffect(() => {
         axios({
             method:"get",
-            url:`http://localhost:8080/details/${params.id}`
-        })
-        .then(response => {
+            url:`http://localhost:5500/details/${params.id}`
+        }).then(response => {
             setProductDetails(response.data);
         })
     },[])

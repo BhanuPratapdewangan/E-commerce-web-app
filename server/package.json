@@ -1,9 +1,18 @@
-
 {
   "type": "module",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "mongoose": "^7.5.2"
-  }
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "server",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "author": "Bhanu Pratap",
+  "license": "ISC",
+  "description": ""
 }

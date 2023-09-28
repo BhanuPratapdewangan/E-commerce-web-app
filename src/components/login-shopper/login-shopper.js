@@ -27,19 +27,20 @@ const LoginShopper = () => {
                 onSubmit={(values) => {
                     axios({
                         method:"get",
-                        url:"http://localhost:8080/login"
+                        url:"http://localhost:5500/login"
                     })
                     .then(response => {
                         for(var user of response.data)
                         {
                             if(user.UserId==values.UserId && user.Password==values.Password)
                             {
-                                setCookies("userId", values.UserId);
-                                navigate('/home');
+                               
+                                navigate('/invalid');
                                 break;
                             } else
                             {
-                                navigate('/invalid');
+                                setCookies("userId", values.UserId);
+                                navigate('/home');
                             }
                         }
                     })

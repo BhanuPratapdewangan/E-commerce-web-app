@@ -2,7 +2,7 @@
 import React from "react";
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { Link, useNavigate} from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 const CrudIndex = () => {
 
@@ -12,31 +12,28 @@ const CrudIndex = () => {
     useEffect(() => {
         axios({
             method: "get",
-            url: "http://localhost:8080/products"
+            url: "http://localhost:5500/products"
+        }).then(response => {
+            setProducts(response.data);
         })
-            .then(response => {
-                setProducts(response.data);
-            })
-    },[products]);
+    }, [products]);
 
-    const DeleteClick = async(e) => { 
+    const DeleteClick = async (e) => {
 
         const id = parseInt(e.currentTarget.value);
+        // console.log(id);
         const flag = window.confirm("Are you sure\nWant to delete");
-        if(flag==true)
-        {
-           await axios({
-                method:"delete",
-                url:`http://localhost:8080/deleteproduct/${id}`
-            })
-            .then(() => {
+        if (flag == true) {
+            await axios({
+                method: "delete",
+                url: `http://localhost:5500/deleteproduct/${id}`
+            }).then(() => {
                 alert("Record Deleted");
                 navigate('/productgrid');
-            })
-            .catch((error) => {
+            }).catch((error) => {
                 console.error(error);
             })
-            
+
         }
     }
     return (

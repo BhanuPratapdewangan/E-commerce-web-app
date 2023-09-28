@@ -16,24 +16,20 @@ const CrudCreate = () => {
     useEffect(() => {
         axios({
             method: "get",
-            url: "http://localhost:8080/products"
+            url: "http://localhost:5500/products"
+        }).then(response => {
+            setProducts(response.data);
         })
-            .then(response => {
-                setProducts(response.data);
-            })
-    },[])
+    }, [])
 
     const verifyProductId = (e) => {
         var id = parseInt(e.target.value)
-        for(var product of products)
-        {
-            if(product.ProductId == id)
-            {
+        for (var product of products) {
+            if (product.ProductId == id) {
                 setProductError("ProductId Taken - Try another");
                 setColor("red");
                 break;
-            } else
-            {
+            } else {
                 setProductError("Product Id Available");
                 setColor("green");
             }
@@ -66,13 +62,12 @@ const CrudCreate = () => {
                 onSubmit={(values) =>
                     axios({
                         method: "post",
-                        url: "http://localhost:8080/addproducts",
+                        url: "http://localhost:5500/addproducts",
                         data: values
+                    }).then(() => {
+                        alert("Added Successfully...!");
+                        navigate("/productgrid");
                     })
-                        .then(() => {
-                            alert("Added Successfully...!");
-                            navigate("/productgrid");
-                        })
                 }
 
             >
@@ -82,7 +77,7 @@ const CrudCreate = () => {
                             <dt>ProductId</dt>
                             <dd><Field name="ProductId" onKeyUp={verifyProductId} type="number" /></dd>
                             <dd className="text-danger"><ErrorMessage name="ProductId" /></dd>
-                            <dd style={{color:color}}>{productError}</dd>
+                            <dd style={{ color: color }}>{productError}</dd>
 
                             <dt>ProductName</dt>
                             <dd><Field name="ProductName" type="text" /></dd>
